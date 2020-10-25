@@ -14,6 +14,13 @@ module.exports = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
+        name: `carousel`,
+        path: `${__dirname}/src/assets/carousel`,
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
         name: `images`,
         path: `${__dirname}/src/assets/images`,
       },
@@ -29,12 +36,24 @@ module.exports = {
         accessToken: 't2oS0Ajo9mGwcHRB62JlWbuuTQdFRkXjKtE2soSmG4I',
       },
     },
+    // {
+    //   resolve: `gatsby-plugin-graphql-codegen`,
+    //   options: {
+    //     fileName: `types/graphql-types.d.ts`,
+    //   },
+    // },
+    `gatsby-plugin-styled-components`,
     {
-      resolve: `gatsby-plugin-graphql-codegen`,
+      resolve: "gatsby-plugin-react-svg",
       options: {
-        fileName: `types/graphql-types.d.ts`,
-      },
+        rule: {
+          include: /svg-icons/ // See below to configure properly
+        }
+      }
     },
+    `gatsby-plugin-scroll-reveal`,
+
+
     /* eslint-enable @typescript-eslint/camelcase */
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
