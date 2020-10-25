@@ -118,7 +118,8 @@ const SectionOne = () => {
       <video autoPlay muted loop>
         <source src={Video} type="video/mp4" />
       </video>
-      <SectionContentWrapper>
+      <div className="dark-overlay"/>
+      <SectionContentWrapper data-sal="fade" data-sal-delay="1000" data-sal-duration="500">
         <Icon />
         <SectionContentTitle>
           Robo<span>SOC</span>

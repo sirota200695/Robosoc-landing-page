@@ -34,7 +34,7 @@ const MenuIcon = styled.button`
 
 const Menu = () => {
   return (
-    <MenuIcon>
+    <MenuIcon data-sal="fade" data-sal-delay="1000" data-sal-duration="500">
       <div />
       <div />
       <div />

@@ -11,7 +11,7 @@ const Nav = styled.nav`
   top: 0;
   padding: 50px 73px;
   width: 100%;
-  z-index: 123;
+  z-index: 1000;
   
   .icon-wrapper {
     opacity: 0;

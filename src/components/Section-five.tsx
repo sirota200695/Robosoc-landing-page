@@ -66,10 +66,10 @@ const SectionContent = styled.div`
 
 const SectionFive = () => {
   return <SectionWrapper>
-    <video autoPlay muted loop>
-      <source src={Video} type="video/mp4" />
+    <video autoPlay muted loop >
+      <source src={Video} type="video/mp4" data-sal="fade"/>
     </video>
-    <SectionContent>
+    <SectionContent data-sal="fade" data-sal-delay="500" data-sal-duration="500">
       <h4 className="section-info">
         <span>RoboSOC</span> converts suspicious issues into behavioral insights, helping organizations make <span>smarter decisions.</span>
       </h4>

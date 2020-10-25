@@ -4,10 +4,12 @@ import Layout from '../components/Layout';
 import SectionOne from '../components/Section-one';
 import SectionTwo from '../components/Section-two';
 import SectionThree from '../components/Section-three';
-import { createGlobalStyle } from 'styled-components';
+import styled, { createGlobalStyle } from 'styled-components';
 import SectionFour from '../components/Section-four';
 import SectionFive from '../components/Section-five';
 import SectionSix from '../components/Section-six';
+import BearIcon from '../assets/svg-icons/bear-logo.svg'
+import MobileIntro from '../components/MobileIntro';
 
 const GlobalStyles = createGlobalStyle`
  html {
@@ -32,7 +34,20 @@ const GlobalStyles = createGlobalStyle`
       display: none;
     }
   }
+  
+  .dark-overlay {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    opacity: 0.9;
+    top: 0;
+    left: 0;
+    z-index: 123;
+    background-image: linear-gradient(to top, rgba(24, 43, 70, 0) 41%, #0f1b2c);
+  }
 `;
+
+
 
 const IndexPage: React.FC = () => (
   <Layout>
@@ -43,6 +58,7 @@ const IndexPage: React.FC = () => (
     <SectionFour/>
     <SectionFive/>
     <SectionSix/>
+    <MobileIntro/>
   </Layout>
 );
 

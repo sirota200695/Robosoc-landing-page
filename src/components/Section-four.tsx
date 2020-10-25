@@ -6,6 +6,20 @@ import AttackerIcon from '../assets/svg-icons/icons-attacker-grey.svg';
 import MailIcon from '../assets/svg-icons/icons-mail-grey.svg';
 import AlertIcon from '../assets/svg-icons/icons-alert-grey.svg';
 import MalwareIcon from '../assets/svg-icons/icons-malware-grey.svg';
+import { graphql, useStaticQuery } from 'gatsby';
+
+interface EventExampleStepNode {
+  id: string;
+  eventsCount: number;
+  eventsKind: string;
+  eventsAction: string;
+}
+
+interface AllContentfulExampleStep {
+  allContentfulEventExampleStep: {
+    nodes: EventExampleStepNode[]
+  }
+}
 
 const Section = styled.section`
   padding: 175px 0;
@@ -364,61 +378,92 @@ const EventsTableMobile = () => {
   </EventsExamplesWrapper>;
 };
 
+const ExampleStepsList = () => {
+  const data: AllContentfulExampleStep = useStaticQuery(graphql`
+  {
+    allContentfulEventExampleStep(sort: {fields: order}) {
+      nodes{
+        id
+        eventsCount
+        eventsKind
+        eventsAction
+      }
+    }
+  }`)
+
+  return <ExampleSteps>
+    {data.allContentfulEventExampleStep.nodes.map(node => {
+      return <ExampleStep key={node.id} data-sal="fade" data-sal-duration="500">
+        <h3 className="step-count">{node.eventsCount}</h3>
+        <p className="step-description">{ node.eventsKind }</p>
+        { node.eventsAction ? <div data-sal="fade" data-sal-delay="250" data-sal-duration="500">
+          <div className="step-before-arrow" />
+          <p className="step-inner-text">{node.eventsAction}</p>
+          <div className="step-after-arrow" />
+          </div> : null }
+      </ExampleStep>
+    })}
+  </ExampleSteps>
+
+
+}
+
 const SectionFour = () => {
   return (
     <Section>
       <SectionContent>
-        <SectionContentDescription>
+        <SectionContentDescription data-sal="slide-right" data-sal-duration="500">
           <SectionContentTitle>
             Here is an example
           </SectionContentTitle>
-          <SectionContentParagraph>
+          <SectionContentParagraph data-sal="fade" data-sal-delay="500" data-sal-duration="500">
             RoboSOC investigates and understands the context of 17k events, groups them into campaigns, and understands
             the attack vector. Next, RoboSOC recommends mitigation steps.
           </SectionContentParagraph>
         </SectionContentDescription>
         <SectionContentExamples className="mobile-d-none">
-          <SectionLargeTitle>
+          <SectionLargeTitle data-sal="slide-left" data-sal-delay="1000" data-sal-duration="500">
             17k events
           </SectionLargeTitle>
         </SectionContentExamples>
       </SectionContent>
       <SectionContent>
         <SectionContentDescription>
-          <ExampleSteps>
-            <ExampleStep>
-              <h3 className="step-count">01</h3>
-              <p className="step-description">Suspicious Senders</p>
-              <div className="step-before-arrow" />
-              <p className="step-inner-text">send</p>
-              <div className="step-after-arrow" />
-            </ExampleStep>
-            <ExampleStep>
-              <h3 className="step-count">50</h3>
-              <p className="step-description">Emails</p>
-              <div className="step-before-arrow" />
-              <p className="step-inner-text">there were opened by</p>
-              <div className="step-after-arrow" />
-            </ExampleStep>
-            <ExampleStep>
-              <h3 className="step-count">04</h3>
-              <p className="step-description">Users</p>
-              <div className="step-before-arrow" />
-              <p className="step-inner-text">and directed to</p>
-              <div className="step-after-arrow" />
-            </ExampleStep>
-            <ExampleStep>
-              <h3 className="step-count">02</h3>
-              <p className="step-description">Suspicious domains</p>
-              <div className="step-before-arrow" />
-              <p className="step-inner-text">and download</p>
-              <div className="step-after-arrow" />
-            </ExampleStep>
-            <ExampleStep>
-              <h3 className="step-count">01</h3>
-              <p className="step-description">File</p>
-            </ExampleStep>
-          </ExampleSteps>
+          {/*<ExampleSteps>*/}
+          {/*  <ExampleStep data-sal="fade">*/}
+          {/*    <h3 className="step-count">01</h3>*/}
+          {/*    <p className="step-description" data-sal="fade" data-sal-delay="250">Suspicious Senders</p>*/}
+          {/*    <div className="step-before-arrow" />*/}
+          {/*    <p className="step-inner-text">send</p>*/}
+          {/*    <div className="step-after-arrow" />*/}
+          {/*  </ExampleStep>*/}
+          {/*  <ExampleStep  data-sal="fade">*/}
+          {/*    <h3 className="step-count">50</h3>*/}
+          {/*    <p className="step-description" data-sal="fade" data-sal-delay="250">Emails</p>*/}
+          {/*    <div className="step-before-arrow" />*/}
+          {/*    <p className="step-inner-text">there were opened by</p>*/}
+          {/*    <div className="step-after-arrow" />*/}
+          {/*  </ExampleStep>*/}
+          {/*  <ExampleStep>*/}
+          {/*    <h3 className="step-count">04</h3>*/}
+          {/*    <p className="step-description">Users</p>*/}
+          {/*    <div className="step-before-arrow" />*/}
+          {/*    <p className="step-inner-text">and directed to</p>*/}
+          {/*    <div className="step-after-arrow" />*/}
+          {/*  </ExampleStep>*/}
+          {/*  <ExampleStep>*/}
+          {/*    <h3 className="step-count">02</h3>*/}
+          {/*    <p className="step-description">Suspicious domains</p>*/}
+          {/*    <div className="step-before-arrow" />*/}
+          {/*    <p className="step-inner-text">and download</p>*/}
+          {/*    <div className="step-after-arrow" />*/}
+          {/*  </ExampleStep>*/}
+          {/*  <ExampleStep>*/}
+          {/*    <h3 className="step-count">01</h3>*/}
+          {/*    <p className="step-description">File</p>*/}
+          {/*  </ExampleStep>*/}
+          {/*</ExampleSteps>*/}
+          <ExampleStepsList/>
         </SectionContentDescription>
         <SectionContentExamples>
           <div className="mobile-d-none">

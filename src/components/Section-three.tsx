@@ -33,15 +33,15 @@ const SectionWrapper = styled.section`
   width: 100%;
   
   .carousel-indicators {
-      
     
       li {
-        width: 10px;
-        height: 10px;
+        width: 14px;
+        height: 14px;
         border-radius: 50%;
-        margin-right: 6px;
-        margin-left: 6px;
+        margin-right: 8px;
+        margin-left: 8px;
         background-color: #d8d8d8;
+        bottom: 10px;
       }
       
       .active {
@@ -49,8 +49,24 @@ const SectionWrapper = styled.section`
         }
         
         @media(max-width: 600px) {
+          margin-right: 6px;
+          margin-left: 6px;
           bottom: -30px;
+          width: 10px;
+          height: 10px;
         }
+    }
+    
+    .carousel-control-next {
+      span {
+        margin-left: 150px;
+      } 
+    }
+    
+    .carousel-control-prev {
+      span {
+        margin-right: 150px;
+      } 
     }
   
   .mobile-wrapper {
@@ -228,8 +244,8 @@ const SectionThree = () => {
   const carouselItems = () => {
     return data.allContentfulCarousel.nodes.reverse().map((node, index) => {
       return <Carousel.Item key={node.id}>
-        <Image fluid={node.image.fluid} style={imageStyles} alt={node.title} />
-        <CarouselItemCaption style={carouselCaptionStyles[index]}>
+        <Image data-sal="fade" data-sal-duration="500" fluid={node.image.fluid} style={imageStyles} alt={node.title} />
+        <CarouselItemCaption data-sal="fade" data-sal-delay="500" data-sal-duration="500" style={carouselCaptionStyles[index]}>
           {/*{index === 4 ? <Icon /> : ''}*/}
           <h2>{node.title}</h2>
           <p>{node.description.description}</p>

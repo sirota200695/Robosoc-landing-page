@@ -75,10 +75,10 @@ const SectionTwo = () => {
   return (
     <SectionWrapper>
       <SectionContent>
-        <SectionContentTitle>
+        <SectionContentTitle data-sal="slide-right" data-sal-duration="500">
           The SOC market needs <span>disruptive</span> solutions
         </SectionContentTitle>
-        <SectionContentDescription>
+        <SectionContentDescription data-sal="fade" data-sal-delay="500" data-sal-duration="500">
           Organizations today face a shortage of SOC analysts. Along with a lack of workforce, the high demand creates a
           reality in which organizations are exposed to compromise. While understaffing, organizations need to analyze
           the flood of data and information to reduce Dwell time.
@@ -88,10 +88,10 @@ const SectionTwo = () => {
         </SectionContentDescription>
       </SectionContent>
       <SectionContent>
-        <SectionContentTitle>
+        <SectionContentTitle data-sal="slide-right" data-sal-duration="500">
           Say hello to <span>Robosoc</span>
         </SectionContentTitle>
-        <SectionContentDescription>
+        <SectionContentDescription data-sal="fade" data-sal-delay="500" data-sal-duration="500">
           How do you solve the problem? Say hello to RoboSOC - the first autonomous SOC analyst. <br/>
           RoboSOC is based on disruptive technology that uses unique and advanced artificial intelligence algorithms to
           investigate cyber incidents autonomously. <br/>
