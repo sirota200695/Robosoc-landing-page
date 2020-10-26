@@ -31,6 +31,7 @@ const SectionContent = styled.div`
   letter-spacing: 0.36px;
   left: 50%;
   transform: translateX(-50%);
+  z-index: 1234;
   
   @media(max-width: 600px) {
     position: relative;
@@ -66,6 +67,7 @@ const SectionContent = styled.div`
 
 const SectionFive = () => {
   return <SectionWrapper>
+    <div className="dark-overlay"/>
     <video autoPlay muted loop >
       <source src={Video} type="video/mp4" data-sal="fade"/>
     </video>

@@ -255,13 +255,13 @@ const SectionThree = () => {
   };
 
   const carouselMobileItems = () => {
-    return data.allContentfulCarouselMobile.nodes.reverse().map((node) => {
+    return data.allContentfulCarouselMobile.nodes.reverse().map((node, index) => {
       return <Carousel.Item key={node.id}>
         <CarouselItemMobile>
           <CarouselItemMobileSticker>
             <span>Why RoboSOC</span>
           </CarouselItemMobileSticker>
-          {/*<Image fluid={node.image.fluid} style={imageStylesMobile} alt={node.title} />*/}
+          <Image fluid={data.allImageSharp.nodes[index].fluid} style={imageStylesMobile} alt={node.title} />
           <CarouselItemMobileWrapper>
             <CarouselItemMobileTitle>{node.title}</CarouselItemMobileTitle>
             <CarouselItemMobileDescription>{node.description.description}</CarouselItemMobileDescription>
