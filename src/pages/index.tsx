@@ -54,7 +54,7 @@ const IndexPage: React.FC = () => (
     <GlobalStyles/>
     <SectionOne/>
     <SectionTwo/>
-    {/*<SectionThree/>*/}
+    <SectionThree/>
     <SectionFour/>
     <SectionFive/>
     <SectionSix/>

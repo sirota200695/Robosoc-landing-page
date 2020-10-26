@@ -28,6 +28,13 @@ module.exports = {
     //     fileName: `types/graphql-types.d.ts`,
     //   },
     // },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `carousel`,
+        path: `${__dirname}/src/assets/images/carousel`,
+      },
+    },
     `gatsby-plugin-styled-components`,
     {
       resolve: "gatsby-plugin-react-svg",

@@ -25,6 +25,9 @@ interface AllContentfulCarousel {
   },
   allContentfulCarouselMobile: {
     nodes: ContentfulCarouselNode[]
+  },
+  allImageSharp: {
+    nodes: { fluid: FluidObject }[];
   }
 }
 
@@ -218,11 +221,6 @@ const SectionThree = () => {
             description {
               description
             }
-            image {
-              fluid{
-                ...GatsbyContentfulFluid
-              }
-            }
           }
         }
         allContentfulCarouselMobile {
@@ -232,11 +230,13 @@ const SectionThree = () => {
             description {
               description
             }
-            image {
-              fluid{
-                ...GatsbyContentfulFluid
+          }
+        }
+          allImageSharp {
+            nodes {
+              fluid {
+                ...GatsbyImageSharpFluid
               }
-            }
           }
         }
       }`);
@@ -244,7 +244,7 @@ const SectionThree = () => {
   const carouselItems = () => {
     return data.allContentfulCarousel.nodes.reverse().map((node, index) => {
       return <Carousel.Item key={node.id}>
-        <Image data-sal="fade" data-sal-duration="500" fluid={node.image.fluid} style={imageStyles} alt={node.title} />
+        <Image data-sal="fade" data-sal-duration="500" fluid={data.allImageSharp.nodes[index].fluid} style={imageStyles} alt={node.title} />
         <CarouselItemCaption data-sal="fade" data-sal-delay="500" data-sal-duration="500" style={carouselCaptionStyles[index]}>
           {/*{index === 4 ? <Icon /> : ''}*/}
           <h2>{node.title}</h2>
@@ -261,7 +261,7 @@ const SectionThree = () => {
           <CarouselItemMobileSticker>
             <span>Why RoboSOC</span>
           </CarouselItemMobileSticker>
-          <Image fluid={node.image.fluid} style={imageStylesMobile} alt={node.title} />
+          {/*<Image fluid={node.image.fluid} style={imageStylesMobile} alt={node.title} />*/}
           <CarouselItemMobileWrapper>
             <CarouselItemMobileTitle>{node.title}</CarouselItemMobileTitle>
             <CarouselItemMobileDescription>{node.description.description}</CarouselItemMobileDescription>
