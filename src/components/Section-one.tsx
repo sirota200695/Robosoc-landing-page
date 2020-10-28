@@ -1,6 +1,7 @@
 import React from 'react';
 import Video from '../assets/videos/section-1-video.mp4';
 import Icon from '../assets/svg-icons/bear-logo.svg';
+import Icon2 from '../assets/svg-icons/bear-logo-2.svg';
 import styled from 'styled-components';
 import 'typeface-montserrat';
 import 'typeface-inter';
@@ -60,9 +61,11 @@ const SectionContentTitle = styled.h1`
     margin-bottom: 10px;
     
     span {
+      text-shadow: none;
       font-size: 108px;
+      background: -webkit-linear-gradient(#f4f7ff,#1c9bd5);
       -webkit-background-clip: text;
-      color: #32b2ed;
+      -webkit-text-fill-color: transparent;
     }
     
     @media(max-width: 600px) {
@@ -76,6 +79,10 @@ const SectionContentTitle = styled.h1`
           letter-spacing: normal;
           text-align: center;
           color: #f4f7ff;
+          
+          background: none;
+          -webkit-background-clip: unset;
+          -webkit-text-fill-color: unset;
         }
     }
 `;
@@ -120,7 +127,7 @@ const SectionOne = () => {
       </video>
       <div className="dark-overlay"/>
       <SectionContentWrapper data-sal="fade" data-sal-delay="1000" data-sal-duration="500">
-        <Icon />
+        <Icon2 />
         <SectionContentTitle>
           Robo<span>SOC</span>
         </SectionContentTitle>

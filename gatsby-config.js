@@ -20,6 +20,7 @@ module.exports = {
       options: {
         spaceId: process.env.CONTENTFUL_SPACE_ID,
         accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
+        downloadLocal: true,
       },
     },
     // {
@@ -28,6 +29,14 @@ module.exports = {
     //     fileName: `types/graphql-types.d.ts`,
     //   },
     // },
+    {
+      resolve: `gatsby-transformer-remark`,
+      options: {
+        plugins: [
+          `gatsby-remark-video-poster`,
+        ],
+      },
+    },
     {
       resolve: `gatsby-source-filesystem`,
       options: {

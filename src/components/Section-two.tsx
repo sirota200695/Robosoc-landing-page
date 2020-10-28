@@ -8,7 +8,7 @@ const SectionWrapper = styled.section`
   padding: 150px 120px;
   
   @media(max-width: 600px) {
-    padding: 16px 26px;
+    padding: 24px;
   }
 `;
 
@@ -39,7 +39,9 @@ const SectionContentTitle = styled.h2`
   letter-spacing: 1px;
   
   span {
-    color: #32b2ed;
+    background-image: radial-gradient(circle at 50% 50%, #fff, #32b2ed 25%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
   }
   
   @media(max-width: 600px) {
@@ -49,6 +51,10 @@ const SectionContentTitle = styled.h2`
     
     span {
       color: #0d1f41;
+      
+      background: none;
+      -webkit-background-clip: unset;
+      -webkit-text-fill-color: unset;
     }
   }
   
@@ -75,10 +81,10 @@ const SectionTwo = () => {
   return (
     <SectionWrapper>
       <SectionContent>
-        <SectionContentTitle data-sal="slide-right" data-sal-duration="500">
-          The SOC market needs <span>disruptive</span> solutions
+        <SectionContentTitle data-sal="slide-right" data-sal-delay="500" data-sal-duration="500">
+          32,000 companies are looking for <span>SOC analyst</span>
         </SectionContentTitle>
-        <SectionContentDescription data-sal="fade" data-sal-delay="500" data-sal-duration="500">
+        <SectionContentDescription data-sal="fade" data-sal-delay="1000" data-sal-duration="500">
           Organizations today face a shortage of SOC analysts. Along with a lack of workforce, the high demand creates a
           reality in which organizations are exposed to compromise. While understaffing, organizations need to analyze
           the flood of data and information to reduce Dwell time.
@@ -88,10 +94,10 @@ const SectionTwo = () => {
         </SectionContentDescription>
       </SectionContent>
       <SectionContent>
-        <SectionContentTitle data-sal="slide-right" data-sal-duration="500">
+        <SectionContentTitle data-sal="slide-right" data-sal-delay="500" data-sal-duration="500">
           Say hello to <span>Robosoc</span>
         </SectionContentTitle>
-        <SectionContentDescription data-sal="fade" data-sal-delay="500" data-sal-duration="500">
+        <SectionContentDescription data-sal="fade" data-sal-delay="1000" data-sal-duration="500">
           How do you solve the problem? Say hello to RoboSOC - the first autonomous SOC analyst. <br/>
           RoboSOC is based on disruptive technology that uses unique and advanced artificial intelligence algorithms to
           investigate cyber incidents autonomously. <br/>
@@ -104,7 +110,7 @@ const SectionTwo = () => {
       <SectionContent>
         <div/>
         <SectionContentDescription>
-          <img src={Image} width="600" alt="Example Image" />
+          <img src={Image} width="800" alt="Example Image" />
         </SectionContentDescription>
       </SectionContent>
     </SectionWrapper>

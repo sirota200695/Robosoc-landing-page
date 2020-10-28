@@ -27,7 +27,7 @@ const Section = styled.section`
   overflow-x: hidden;
   
   @media(max-width: 600px) {
-    padding: 0;
+    padding: 24px 0;
   }
 `;
 
@@ -112,6 +112,12 @@ const ExampleSteps = styled.div`
 
 const ExampleStep = styled.div`
   font-family: Montserrat, sans-serif;
+  
+  @media(max-width: 600px) {
+    &:first-of-type {
+       margin-top: 120px;
+     }
+  }
 
   .step-count {
     margin-top: 70px;
@@ -394,7 +400,7 @@ const ExampleStepsList = () => {
   return <ExampleSteps>
     {data.allContentfulEventExampleStep.nodes.map(node => {
       return <ExampleStep key={node.id} data-sal="fade" data-sal-duration="500">
-        <h3 className="step-count">{node.eventsCount}</h3>
+        <h3 className="step-count">{node.eventsCount.toString().length === 1 ? '0' + node.eventsCount : node.eventsCount}</h3>
         <p className="step-description">{ node.eventsKind }</p>
         { node.eventsAction ? <div data-sal="fade" data-sal-delay="250" data-sal-duration="500">
           <div className="step-before-arrow" />

@@ -10,6 +10,7 @@ import SectionFive from '../components/Section-five';
 import SectionSix from '../components/Section-six';
 import BearIcon from '../assets/svg-icons/bear-logo.svg'
 import MobileIntro from '../components/MobileIntro';
+import { useEffect, useState } from 'react';
 
 const GlobalStyles = createGlobalStyle`
  html {
@@ -49,17 +50,19 @@ const GlobalStyles = createGlobalStyle`
 
 
 
-const IndexPage: React.FC = () => (
-  <Layout>
-    <GlobalStyles/>
-    <SectionOne/>
-    <SectionTwo/>
-    <SectionThree/>
-    <SectionFour/>
-    <SectionFive/>
-    <SectionSix/>
-    <MobileIntro/>
-  </Layout>
-);
+const IndexPage: React.FC = () => {
+    return (
+      <Layout>
+        <GlobalStyles/>
+        <SectionOne/>
+        <SectionTwo/>
+        <SectionThree/>
+        <SectionFour/>
+        <SectionFive/>
+        <SectionSix/>
+        <MobileIntro/>
+      </Layout>
+    );
 
+}
 export default IndexPage;

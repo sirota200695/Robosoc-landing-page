@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { graphql, useStaticQuery } from 'gatsby';
 import styled from 'styled-components';
 import Image, { FluidObject } from 'gatsby-image';
@@ -36,7 +36,6 @@ const SectionWrapper = styled.section`
   width: 100%;
   
   .carousel-indicators {
-    
       li {
         width: 14px;
         height: 14px;
@@ -52,11 +51,17 @@ const SectionWrapper = styled.section`
         }
         
         @media(max-width: 600px) {
-          margin-right: 6px;
-          margin-left: 6px;
-          bottom: -30px;
-          width: 10px;
-          height: 10px;
+        
+        
+          bottom: 24px;
+        
+          li {
+            margin-right: 6px;
+            margin-left: 6px;
+            bottom: -30px;
+            width: 10px;
+            height: 10px;
+          }
         }
     }
     
@@ -86,6 +91,10 @@ const SectionWrapper = styled.section`
   @media(max-width: 600px) {
     .mobile-wrapper {
       display: block;
+      
+      .carousel {
+         height: 100%;
+       }
     }
     
     .desktop-wrapper {
@@ -113,7 +122,7 @@ const CarouselItemCaption = styled.div`
   
   p {
     font-family: Inter, sans-serif;
-    font-size: 24px;
+    font-size: 22px;
     font-weight: 500;
   }
 `;
@@ -161,7 +170,7 @@ const CarouselItemMobileSticker = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-`
+`;
 
 const imageStyles = {
   height: '100vh',
@@ -191,7 +200,7 @@ const carouselCaptionStyles = [
     width: '47%',
   },
   {
-    bottom: '188px',
+    bottom: '280px',
     left: '50%',
     textAlign: 'left',
     width: '45%',
@@ -200,7 +209,7 @@ const carouselCaptionStyles = [
     top: '115px',
     left: '100px',
     textAlign: 'left',
-    width: '45%',
+    width: '47%',
   },
   {
     bottom: '130px',
@@ -220,21 +229,21 @@ const SectionThree = () => {
             title
             description {
               description
-            }
+            },
           }
-        }
+        },
         allContentfulCarouselMobile {
           nodes {
             id
             title
             description {
               description
-            }
+            },
           }
         }
-          allImageSharp {
+          allImageSharp(sort: {fields: fluid___originalName}) {
             nodes {
-              fluid {
+              fluid(maxWidth: 1920) {
                 ...GatsbyImageSharpFluid
               }
           }
@@ -244,9 +253,9 @@ const SectionThree = () => {
   const carouselItems = () => {
     return data.allContentfulCarousel.nodes.reverse().map((node, index) => {
       return <Carousel.Item key={node.id}>
-        <Image data-sal="fade" data-sal-duration="500" fluid={data.allImageSharp.nodes[index].fluid} style={imageStyles} alt={node.title} />
-        <CarouselItemCaption data-sal="fade" data-sal-delay="500" data-sal-duration="500" style={carouselCaptionStyles[index]}>
-          {/*{index === 4 ? <Icon /> : ''}*/}
+        <Image fluid={data.allImageSharp.nodes[index].fluid} style={imageStyles} alt={node.title} />
+        <CarouselItemCaption data-sal="fade" data-sal-delay="500" data-sal-duration="500"
+                             style={carouselCaptionStyles[index]}>
           <h2>{node.title}</h2>
           <p>{node.description.description}</p>
         </CarouselItemCaption>

@@ -74,6 +74,8 @@ const SectionFive = () => {
     <SectionContent data-sal="fade" data-sal-delay="500" data-sal-duration="500">
       <h4 className="section-info">
         <span>RoboSOC</span> converts suspicious issues into behavioral insights, helping organizations make <span>smarter decisions.</span>
+        <br/><br/>
+        Its a great ROI, one RoboSOC equal 3 analysts
       </h4>
     </SectionContent>
   </SectionWrapper>
